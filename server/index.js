@@ -25,7 +25,7 @@ app.post("/create", (req, res)=>{
             if(err){
                 console.log(err);
             }else{
-                res.send("Empleado registrado con exito")
+                res.send(result)
             }
         }
     )
@@ -57,7 +57,20 @@ app.put("/update", (req, res)=>{
             if(err){
                 console.log(err);
             }else{
-                res.send("Empleado actualizado con exito")
+                res.send(result)
+            }
+        }
+    )
+});
+
+app.delete("/delete/:id", (req, res)=>{
+    const id = req.params.id;
+    db.query('DELETE from dt_empledos.tr_empleados where id=?', id,
+        (err, result)=>{
+            if(err){
+                console.log(err);
+            }else{
+                res.send(result)
             }
         }
     )
